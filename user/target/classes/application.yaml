@@ -1,0 +1,54 @@
+server:
+  port: 8002
+  servlet:
+    context-path:
+
+spring:
+  profiles:
+    active: dev
+  application:
+    name: user
+
+congomall:
+  cache:
+    redis:
+      bloom-filter:
+        default:
+          enabled: true
+          expected-insertions: 10000
+          false-probability: 0.01
+          name: cache_penetration_bloom_filter
+      prefix: '${spring.application.name}:'
+      value-timeout: 50000
+feign:
+  hystrix:
+    enabled: true
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        loggerLevel: full
+        readTimeout: 5000
+      ## 为serviceC这个服务单独配置超时时间
+      service:
+        connectTimeout: 30000
+        loggerLevel: full
+        readTimeout: 30000
+  httpclient:
+    enabled: false
+    #max-connections: 200 # 最大连接数
+    #max-connections-per-route: 50 # 单个路径的最大连接数
+  ## 开启压缩
+  compression:
+    request:
+      enabled: true
+    response:
+      enabled: true
+  okhttp:
+    enabled: true
+mybatis-plus:
+  global-config:
+    db-config:
+      logic-delete-field: delFlag
+      logic-delete-value: 1
+      logic-not-delete-value: 0

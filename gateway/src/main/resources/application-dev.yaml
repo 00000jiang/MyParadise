@@ -1,0 +1,23 @@
+spring:
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+        server-addr: 120.79.163.227:9949
+        username: nacos
+        password: nacos
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: user
+          uri: lb://user
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+logging:
+  level:
+    org.springframework.cloud.gateway: debug
