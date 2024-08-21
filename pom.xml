@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.paradise.partner</groupId>
+    <groupId>com.paradise</groupId>
     <artifactId>MyParadise</artifactId>
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
@@ -13,10 +13,13 @@
         <module>common</module>
         <module>gateway</module>
         <module>user</module>
+        <module>job</module>
+        <module>message</module>
     </modules>
 
     <properties>
         <!--项目版本号-->
+        <lanlinker.partner.version>0.0.1</lanlinker.partner.version>
         <spring-boot.version>2.3.12.RELEASE</spring-boot.version>
         <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
         <spring-cloud-alibaba.version>2.2.7.RELEASE</spring-cloud-alibaba.version>
@@ -115,7 +118,7 @@
                 <version>${hutool.version}</version>
             </dependency>
             <!--mapstruct-->
-            <!--<dependency>
+            <dependency>
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-jdk8</artifactId>
                 <version>${mapstruct.version}</version>
@@ -124,7 +127,7 @@
                 <groupId>org.mapstruct</groupId>
                 <artifactId>mapstruct-processor</artifactId>
                 <version>${mapstruct.version}</version>
-            </dependency>-->
+            </dependency>
             <!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 -->
             <dependency>
                 <groupId>io.springfox</groupId>
@@ -172,5 +175,4 @@
 
         </dependencies>
     </dependencyManagement>
-
 </project>

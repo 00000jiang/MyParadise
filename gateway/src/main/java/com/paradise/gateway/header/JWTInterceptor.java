@@ -46,7 +46,7 @@ public class JWTInterceptor implements GlobalFilter{
         }
         try {
             HttpHeaders headers = request.getHeaders();
-            String token = headers.getFirst("partner-token");
+            String token = headers.getFirst("paradise-token");
             // 予以放行
             boolean verify  = JWTUitls.verifyToken(token);// 验证令牌
             if (verify) {

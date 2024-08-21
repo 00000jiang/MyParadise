@@ -1,0 +1,35 @@
+server:
+  port: 8004
+  servlet:
+    context-path:
+
+spring:
+  application:
+    name: job
+  profiles:
+    active: dev
+congomall:
+  cache:
+    redis:
+      bloom-filter:
+        default:
+          enabled: true
+          expected-insertions: 10000
+          false-probability: 0.01
+          name: cache_penetration_bloom_filter
+      prefix: '${spring.application.name}:'
+      value-timeout: 50000
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        loggerLevel: HEADERS
+        readTimeout: 5000
+  httpclient:
+    enabled: false
+    max-connections: 200 # 最大连接数
+    max-connections-per-route: 50 # 单个路径的最大连接数
+  okhttp:
+    enabled: true

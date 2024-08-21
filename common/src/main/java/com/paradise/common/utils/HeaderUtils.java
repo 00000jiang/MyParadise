@@ -24,6 +24,6 @@ public class HeaderUtils {
      */
     public static String getToken() {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        return attributes.getRequest().getHeader("lanlinker-partner");
+        return attributes.getRequest().getHeader("lanlinker-paradise");
     }
 }

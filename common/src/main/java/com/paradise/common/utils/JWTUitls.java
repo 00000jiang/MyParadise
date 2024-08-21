@@ -22,7 +22,7 @@ import java.util.Map;
 public class JWTUitls {
 
     private static final long EXPIRE_TIME = 60000L;//单位为秒
-    private static final String TOKEN_SECRET = "lanlinker-partner";
+    private static final String TOKEN_SECRET = "lanlinker-paradise";
 
     /**
      * 生成token
