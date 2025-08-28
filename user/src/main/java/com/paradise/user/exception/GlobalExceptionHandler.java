@@ -17,7 +17,7 @@
 
 package com.paradise.user.exception;
 
-import com.paradise.common.errorcode.BaseErrorCode;
+import com.paradise.common.result.errorcode.BaseErrorCode;
 import com.paradise.common.exception.AbstractException;
 import com.paradise.common.result.Result;
 import com.paradise.common.result.Results;

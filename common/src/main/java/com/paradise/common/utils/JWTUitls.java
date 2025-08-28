@@ -7,7 +7,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.auth0.jwt.exceptions.JWTVerificationException;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
-import com.paradise.common.errorcode.BaseErrorCode;
+import com.paradise.common.result.errorcode.BaseErrorCode;
 import com.paradise.common.exception.ClientException;
 import org.springframework.util.StringUtils;
 

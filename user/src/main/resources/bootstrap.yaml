@@ -1,54 +1,89 @@
+#两种方案
+#1.可以将配置文件写死，定义在resources文件夹目录下，每个环境都要创建一个
+#2.将配置文件放在nacos配置中心，每个环境都定义一个配置文件
+
 server:
   port: 8002
   servlet:
     context-path:
+
+nacos:
+  host: 192.168.1.39
+  port: 8848
+  username: nacos
+  password: lanlinker789
+  namespace-dev: be6ce011-8cf0-452d-934d-7db943424893
 
 spring:
   profiles:
     active: dev
   application:
     name: user
+  cloud:
+    nacos:
+      # Nacos 服务发现与注册配置
+      discovery:
+        server-addr: ${nacos.host}:${nacos.port}
+        username: ${nacos.username}
+        password: ${nacos.password}
+        namespace: ${nacos.namespace-dev}
+      # Nacos 配置管理  --原本每个环境定义的配置文件application-dev，改成通过nacos配置中心管理。这里我将application-dev文件的内容存放至nacos配置中心
+      config:
+        server-addr: ${nacos.host}:${nacos.port}
+        username: ${nacos.username}
+        password: ${nacos.password}
+        namespace: ${nacos.namespace-dev}
+        file-extension: yaml
+        # 全局的配置文件，不管什么环境，什么模块，都使用这个配置文件
+      shared-configs:
+        - data-id: common.yaml
+          refresh: true
+      #开展，独立的配置文件
+      extension-configs:
+        - data-id: ${spring.application.name}-${spring.profiles.active}.${spring.cloud.nacos.config.file-extension}
+          refresh: true
 
-congomall:
-  cache:
-    redis:
-      bloom-filter:
-        default:
-          enabled: true
-          expected-insertions: 10000
-          false-probability: 0.01
-          name: cache_penetration_bloom_filter
-      prefix: '${spring.application.name}:'
-      value-timeout: 50000
-feign:
-  hystrix:
-    enabled: true
-  client:
-    config:
-      default:
-        connectTimeout: 5000
-        loggerLevel: full
-        readTimeout: 5000
-      ## 为serviceC这个服务单独配置超时时间
-      service:
-        connectTimeout: 30000
-        loggerLevel: full
-        readTimeout: 30000
-  httpclient:
-    enabled: false
-    #max-connections: 200 # 最大连接数
-    #max-connections-per-route: 50 # 单个路径的最大连接数
-  ## 开启压缩
-  compression:
-    request:
-      enabled: true
-    response:
-      enabled: true
-  okhttp:
-    enabled: true
-mybatis-plus:
-  global-config:
-    db-config:
-      logic-delete-field: delFlag
-      logic-delete-value: 1
-      logic-not-delete-value: 0
+#这里我将下面的 公共配置 放在nacos配置中心，common.yaml
+#congomall:
+#  cache:
+#    redis:
+#      bloom-filter:
+#        default:
+#          enabled: true
+#          expected-insertions: 10000
+#          false-probability: 0.01
+#          name: cache_penetration_bloom_filter
+#      prefix: '${spring.application.name}:'
+#      value-timeout: 50000
+#feign:
+#  hystrix:
+#    enabled: true
+#  client:
+#    config:
+#      default:
+#        connectTimeout: 5000
+#        loggerLevel: full
+#        readTimeout: 5000
+#      ## 为serviceC这个服务单独配置超时时间
+#      service:
+#        connectTimeout: 30000
+#        loggerLevel: full
+#        readTimeout: 30000
+#  httpclient:
+#    enabled: false
+#    #max-connections: 200 # 最大连接数
+#    #max-connections-per-route: 50 # 单个路径的最大连接数
+#  ## 开启压缩
+#  compression:
+#    request:
+#      enabled: true
+#    response:
+#      enabled: true
+#  okhttp:
+#    enabled: true
+#mybatis-plus:
+#  global-config:
+#    db-config:
+#      logic-delete-field: delFlag
+#      logic-delete-value: 1
+#      logic-not-delete-value: 0

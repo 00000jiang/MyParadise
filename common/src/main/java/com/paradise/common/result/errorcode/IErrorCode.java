@@ -1,4 +1,4 @@
-package com.paradise.common.errorcode;
+package com.paradise.common.result.errorcode;
 
 /**
  * @author jrf

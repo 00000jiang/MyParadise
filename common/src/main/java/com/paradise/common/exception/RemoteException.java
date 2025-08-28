@@ -1,6 +1,6 @@
 package com.paradise.common.exception;
 
-import com.paradise.common.errorcode.IErrorCode;
+import com.paradise.common.result.errorcode.IErrorCode;
 
 /**
  * 远程服务调用异常

@@ -1,7 +1,7 @@
 package com.paradise.common.exception;
 
 import com.google.common.base.Strings;
-import com.paradise.common.errorcode.IErrorCode;
+import com.paradise.common.result.errorcode.IErrorCode;
 import lombok.Getter;
 
 import java.util.Optional;

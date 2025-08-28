@@ -1,6 +1,6 @@
 package com.paradise.message.fallback;
 
-import com.paradise.common.errorcode.BaseErrorCode;
+import com.paradise.common.result.errorcode.BaseErrorCode;
 import com.paradise.common.exception.ClientException;
 import com.paradise.common.result.Result;
 import com.paradise.message.send.UserSendMessageService;

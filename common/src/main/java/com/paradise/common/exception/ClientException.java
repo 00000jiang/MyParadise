@@ -1,7 +1,7 @@
 package com.paradise.common.exception;
 
-import com.paradise.common.errorcode.BaseErrorCode;
-import com.paradise.common.errorcode.IErrorCode;
+import com.paradise.common.result.errorcode.BaseErrorCode;
+import com.paradise.common.result.errorcode.IErrorCode;
 
 /**
  * 客户端异常
